@@ -1,0 +1,64 @@
+@import "../style/var";
+
+.AdminBody {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 38px 62px 41px;
+  width: calc(100% - 219px);
+
+  .BodyHeader {
+    padding-bottom: 35px;
+    border-bottom: 2px dotted #b7bdc5;
+
+    .Title {
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.5;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #53687e;
+
+      span {
+        color: #b7bdc4;
+      }
+    }
+
+    .Description {
+      font-size: 14px;
+      line-height: 1.71;
+      letter-spacing: .4px;
+      color: $font_color;
+    }
+  }
+
+  .BodyFooter {
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px dotted #b7bdc5;
+
+    .LeftActions {
+      .Comments {
+        margin-left: 71px;
+        font-size: 14px;
+        line-height: 1;
+        letter-spacing: .5px;
+        color: #334152;
+        cursor: pointer;
+
+        svg {
+          margin-right: 5px;
+          color: #2477b3;
+        }
+      }
+    }
+
+    .RightActions {
+      .BtnPrimary {
+        margin-left: 32px;
+      }
+    }
+  }
+}

@@ -1,0 +1,117 @@
+@import "../style/var";
+
+.OfficeEdit {
+  margin: -12px -33px;
+  padding: 12px 33px 24px 10px;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 2px;
+
+  .FormBox {
+    flex-shrink: 0;
+
+    .FormGroup {
+      position: relative;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      label {
+        margin: 0;
+        margin-right: 10px;
+        flex-shrink: 0;
+        text-align: right;
+        font-size: 14px;
+        line-height: 1.14;
+        font-weight: 400;
+        letter-spacing: .4px;
+        color: #53687e;
+        cursor: pointer;
+      }
+
+      input {
+        width: 191px;
+        padding: 8px 5px;
+        border: 1px solid #d8dde3;
+        border-radius: 2px;
+        font-size: 14px;
+        line-height: 1.14px;
+        letter-spacing: .4px;
+        color: $font_color;
+
+        &.OfficeType {
+          position: relative;
+
+          &:after {
+            content: 'Primary HQ';
+            position: absolute;
+            display: block;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-40%);
+          }
+        }
+
+        &.invalid {
+          border-color: red;
+        }
+      }
+
+      .Countries, .City {
+        padding: 0;
+        max-height: 112px;
+        overflow-y: auto;
+        position: absolute;
+        right: 0;
+        top: calc(100% - 1px);
+        width: 191px;
+        border: 1px solid #d8dde3;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+        list-style: none;
+        z-index: -10;
+        opacity: 0;
+        transition: z-index .1s;
+
+        li {
+          padding: 11px 16px;
+          background-color: white;
+          font-size: 14px;
+          line-height: 1;
+          letter-spacing: .4px;
+          color: $font_color;
+          cursor: pointer;
+
+          &.active {
+            background-color: #f7f8fa;
+            font-weight: 600;
+          }
+
+          &:hover {
+            background-color: #2888d1;
+            color: #fff;
+          }
+
+          & ~ li {
+            border-top: 1px solid #d8dde3;
+          }
+        }
+      }
+
+      input:focus + .Countries,
+      input:focus + .City {
+        z-index: 10;
+        opacity: 1;
+      }
+    }
+  }
+
+  .EditActions {
+    flex-shrink: 0;
+
+    .BtnPrimary {
+      margin-left: 10px;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+.MainHeader {
+  margin-bottom: 24px;
+  background-color: #175786;
+  padding: 15px 10px;
+
+  .NawWrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    .LeftNaw, .RightNaw {
+      display: flex;
+      align-items: center;
+      
+      a {
+        font-size: 14px;
+        letter-spacing: .6px;
+        color: #fff;
+
+        & ~ a {
+          margin-left: 39px;
+        }
+      }
+    }
+
+    .LeftNaw {
+      .Logo {
+        margin: 0 31px 0 0;
+        width: 123px;
+        height: 33px;
+        font-size: 16px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="111" height="111" viewBox="0 0 111 111">
+    <g fill="none" fill-rule="evenodd">
+        <g stroke-width="8">
+            <path stroke="#E9F0F5" d="M55.5 107c22.135 0 41.008-13.964 48.29-33.564A51.393 51.393 0 0 0 107 55.5c0-5.239-.782-10.295-2.236-15.058A51.26 51.26 0 0 0 98.8 27.609a51.736 51.736 0 0 0-16.48-16.082 51.212 51.212 0 0 0-13.354-5.748A51.564 51.564 0 0 0 55.5 4C27.057 4 4 27.057 4 55.5S27.057 107 55.5 107z" opacity=".52"/>
+            <path stroke="#FFF" d="M107 55c0-5.188-.775-10.195-2.215-14.912a50.762 50.762 0 0 0-5.904-12.708 51.234 51.234 0 0 0-16.32-15.926A50.715 50.715 0 0 0 69.336 5.76 51.064 51.064 0 0 0 56 4"/>
+            <path stroke="#FFF" d="M92 19a51.954 51.954 0 0 0-9.942-7.643 52.546 52.546 0 0 0-13.473-5.619A53.59 53.59 0 0 0 55 4"/>
+        </g>
+        <g fill="#FFF" font-family="OpenSans, Open Sans">
+            <text font-size="33" transform="translate(33 31)">
+                <tspan x="0" y="35">2</tspan>
+            </text>
+            <text font-size="17" letter-spacing=".486" transform="translate(33 31)">
+                <tspan x="23" y="23">/ 8</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

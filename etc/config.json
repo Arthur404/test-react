@@ -1,0 +1,3 @@
+{
+  "mongoURI": "mongodb://spd:1234@ds137650.mlab.com:37650/spd_test"
+}

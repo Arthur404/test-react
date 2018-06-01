@@ -1,0 +1,14 @@
+.Offices {
+  padding: 36px 0 38px;
+
+  .NewOffice {
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    & > .Btn {
+      border-color: #d6d6d6;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+h1,h2,h3,h4,h5,h6,p,a,blockquote,q,li,address,span,button,input,label,textarea,select {
+  font-family: $primary_font;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $font_color;
+}
+
+body {
+  background-color: #f7f8fa;
+}
+
+a {
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+}

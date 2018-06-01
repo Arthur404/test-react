@@ -1,0 +1,68 @@
+@import "../style/var";
+
+.Office {
+  margin-top: 16px;
+  padding: 12px 33px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #d7dce2;
+  border-radius: 2px;
+
+  table {
+    table-layout: fixed;
+    flex-shrink: 0;
+
+    tr {
+      vertical-align: text-top;
+    }
+
+    th {
+      font-size: 14px;
+      line-height: 1.14;
+      letter-spacing: .4px;
+      font-weight: normal;
+      color: #53687e;
+    }
+
+    td {
+      address, span {
+        font-size: 14px;
+        line-height: 1.29;
+        letter-spacing: .4px;
+        font-weight: normal;
+        color: $font_color;
+      }
+
+      .OfficePrimary {
+        font-weight: 600;
+
+        svg {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    &.OfficeAddress {
+      margin-right: 60px;
+      width: 280px;
+
+      th {
+        width: 75px;
+      }
+    }
+
+    &.OfficeContact {
+      width: 300px;
+
+      th {
+        width: 65px;
+      }
+    }
+  }
+
+  .OfficeActions {
+    .BtnRemove {
+      margin-right: 10px;
+    }
+  }
+}

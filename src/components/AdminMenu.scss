@@ -1,0 +1,86 @@
+@import "../style/var";
+
+.AdminMenu {
+  flex-shrink: 0;
+  width: 219px;
+  background-color: #e9f0f5;
+  border: 1px solid #fff;
+
+  .Steps {
+    padding: 20px 58px;
+    background-color: $primary_color;
+
+    img {
+      width: 103px;
+      height: 103px;
+    }
+  }
+
+  .MenuItems {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .MenuItem {
+      padding-left: 23px;
+      border-bottom: 1px solid #d8dde3;
+      font-size: 14px;
+      line-height: 3.43;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+
+      span {
+        cursor: pointer;
+      }
+    }
+
+    .SubItems {
+      padding: 0;
+      list-style: none;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height .3s .3s, padding .3s .3s, opacity .3s;
+
+      .SubItem {
+        font-size: 14px;
+        line-height: 2.29;
+        text-transform: none;
+        color: #8c96a3;
+        cursor: pointer;
+
+        &.Check {
+          color: #334152;
+
+          .CheckIcon {
+            margin-left: 16px;
+            color: #8c96a3;
+          }
+        }
+
+        &.Active {
+          position: relative;
+          font-weight: 600;
+          color: #334152;
+
+          &:before {
+            content: '';
+            display: block;
+            width: 2px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -23px;
+            background-color: #2888d1;
+          }
+        }
+      }
+    }
+
+    .Active + .SubItems {
+      padding: 0 0 11px;
+      max-height: 120px;
+      opacity: 1;
+      transition: max-height .3s, padding .3s, opacity .3s .3s;
+    }
+  }
+}

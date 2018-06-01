@@ -1,0 +1,48 @@
+.Btn {
+  padding: 9px 16px;
+  background-color: #fff;
+  border: 1px solid #53687e;
+  border-radius: 2px;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: bold;
+  letter-spacing: .4px;
+  color: #53687e;
+
+  &:hover {
+    background-color: #e6e6e6;
+    color: #53687e;
+  }
+
+  &Primary {
+    background-color: #2888d1;
+    border: 1px solid #2888d1;
+    color: #fff;
+
+    &:hover {
+      background-color: #286090;
+      border: 1px solid #286090;
+      color: #fff;
+    }
+  }
+
+  &Remove {
+    background-color: #f7f8fa;
+    border: 1px solid #d8dde3;
+    font-weight: normal;
+    color: #53687e;
+
+    &:hover {
+      background-color: #e6e6e6;
+      color: #53687e;
+    }
+  }
+
+  &Sm {
+    padding: 5px 16px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
