@@ -1,0 +1,124 @@
+@import "../style/var";
+
+.PopupRemove {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,.1);
+
+  .RemoveBlock {
+    width: 435px;
+    padding: 18px 35px 28px;
+    box-shadow: 0 8px 9px 0 rgba(0, 0, 0, 0.24), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
+    background-color: white;
+    border-radius: 4px;
+
+    .Description {
+      margin-bottom: 14px;
+      font-size: 14px;
+      line-height: 1.71;
+      letter-spacing: .4px;
+      color: $font_color;
+    }
+
+    .OfficeRemove {
+      .FormGroup {
+        position: relative;
+        margin-bottom: 8px;
+
+        label {
+          margin-bottom: 5px;
+          font-size: 14px;
+          line-height: 1.14;
+          font-weight: 400;
+          letter-spacing: .4px;
+          color: #53687e;
+          cursor: pointer;
+        }
+
+        input, textarea {
+          width: 100%;
+          padding: 8px 5px;
+          border: 1px solid #d8dde3;
+          border-radius: 2px;
+          font-size: 14px;
+          line-height: 1.14;
+          letter-spacing: .4px;
+          color: $font_color;
+
+          &.invalid {
+            border-color: red;
+          }
+        }
+
+        textarea {
+          margin-bottom: 10px;
+        }
+
+        .AngleDown {
+          position: absolute;
+          right: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 16px;
+          cursor: pointer;
+        }
+
+        ul {
+          padding: 0;
+          max-height: 112px;
+          overflow-y: auto;
+          position: absolute;
+          right: 0;
+          top: calc(100% - 1px);
+          width: 100%;
+          border: 1px solid #d8dde3;
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+          list-style: none;
+          z-index: -10;
+          opacity: 0;
+          transition: z-index .1s;
+
+          li {
+            padding: 11px 16px;
+            background-color: white;
+            font-size: 14px;
+            line-height: 1;
+            letter-spacing: .4px;
+            color: $font_color;
+            cursor: pointer;
+
+            &.active {
+              background-color: #f7f8fa;
+              font-weight: 600;
+            }
+
+            &:hover {
+              background-color: #2888d1;
+              color: #fff;
+            }
+
+            & ~ li {
+              border-top: 1px solid #d8dde3;
+            }
+          }
+        }
+
+        input:focus + ul {
+          z-index: 10;
+          opacity: 1;
+        }
+      }
+
+      .FormAction {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}

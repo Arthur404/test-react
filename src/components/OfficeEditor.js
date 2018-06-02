@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
-import faCheck from '@fortawesome/fontawesome-free-solid/faCheck';
+import {faCheck, faAngleDown} from '@fortawesome/fontawesome-free-solid';
 
 import {COUNTRIES, STATES} from '../constants/OfficeConst';
 
@@ -257,17 +257,24 @@ class OfficeEditor extends Component<State> {
         return isError;
     };
 
+    setFocus(fieldName) {
+        this[fieldName].focus();
+    }
+
     render() {
         return (
             <form autoComplete="off" className="OfficeEdit" onSubmit={this.handleSubmit}>
                 <div className="FormBox">
-                    <div className="FormGroup">
+                    <div className="FormGroup Select">
                         <label htmlFor="Country">*Country:</label>
-                        <input className={this.state.countryValid ? '' : 'invalid'} type='text' name="country" onChange={this.handleChange.bind(this, COUNTRIES)} value={this.state.country} id="Country"/>
+                        <span onClick={this.setFocus.bind(this, 'country')} className='AngleDown'>
+                            <FontAwesomeIcon icon={faAngleDown}/>
+                        </span>
+                        <input ref={(input) => { this.country = input; }} className={this.state.countryValid ? '' : 'invalid'} type='text' name='country' onChange={this.handleChange.bind(this, COUNTRIES)} value={this.state.country} id="Country"/>
                         <ul className='Countries'>
                             {
                                 this.state.displayCountries.map((country, id) => (
-                                    <li onClick={this.handleSetValue.bind(this, "country", country)} key={id} >{country}</li>
+                                    <li onClick={this.handleSetValue.bind(this, 'country', country)} key={id} >{country}</li>
                                 ))
                             }
                         </ul>
@@ -280,9 +287,12 @@ class OfficeEditor extends Component<State> {
                         <label htmlFor="Code">*Postal Code:</label>
                         <input className={this.state.codeValid ? '' : 'invalid'} type='text' name='code' onChange={this.handleChange.bind(this, [])} value={this.state.code} id='Code'/>
                     </div>
-                    <div className="FormGroup">
+                    <div className="FormGroup Select">
                         <label htmlFor="City">*City:</label>
-                        <input className={this.state.cityValid ? '' : 'invalid'} type='text' name='city' onChange={this.handleChange.bind(this, COUNTRIES)} value={this.state.city} id='City'/>
+                        <span onClick={this.setFocus.bind(this, 'city')} className="AngleDown">
+                            <FontAwesomeIcon icon={faAngleDown}/>
+                        </span>
+                        <input ref={(input) => { this.city = input; }} className={this.state.cityValid ? '' : 'invalid'} type='text' name='city' onChange={this.handleChange.bind(this, COUNTRIES)} value={this.state.city} id='City'/>
                         <ul className='City'>
                             {
                                 this.state.displayCity.map((city, id) => (

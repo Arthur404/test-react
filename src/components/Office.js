@@ -5,6 +5,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faCheck from '@fortawesome/fontawesome-free-solid/faCheck';
 
 import OfficeEditor from './OfficeEditor';
+import OfficeRemoving from './OfficeRemoving';
 
 import './Office.scss'
 
@@ -12,9 +13,16 @@ class Office extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isEdit: false
+            isEdit: false,
+            isRemove: false
         }
     }
+
+    handleRemoveOffice(state) {
+        this.setState(() => ({
+            isRemove: state
+        }));
+    };
 
     handleUpdateOffice = (data) => {
         this.props.officeActions.updateOffice(data.id, data);
@@ -37,6 +45,11 @@ class Office extends Component {
             this.state.isEdit ?
                 <OfficeEditor data={data} saveOffice={this.handleUpdateOffice} stateForm={this.editOffice.bind(this)} officeStates={this.props.officeStates} /> :
                 <React.Fragment>
+                    {
+                        this.state.isRemove ?
+                            <OfficeRemoving handleCancelRemoveOffice={this.handleRemoveOffice.bind(this)} handleOfficeDelete={this.handleOfficeDelete.bind(this, data)}/>
+                            : null
+                    }
                     <table className='OfficeAddress'>
                         <tbody>
                         <tr>
@@ -92,7 +105,7 @@ class Office extends Component {
                         </tbody>
                     </table>
                     <div className="OfficeActions">
-                        <button onClick={this.handleOfficeDelete.bind(this, data)} className='Btn BtnRemove BtnSm'>Remove</button>
+                        <button onClick={this.handleRemoveOffice.bind(this, true)} className='Btn BtnRemove BtnSm'>Remove</button>
                         <button onClick={this.editOffice.bind(this, true)} className='Btn BtnPrimary BtnSm'>Edit</button>
                     </div>
                 </React.Fragment>
