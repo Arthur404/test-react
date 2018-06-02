@@ -65,7 +65,16 @@ class OfficeEditor extends Component<State> {
 
     handleChange(array, e) {
         const name = e.target.name;
-        const value = e.target.value;
+        let value = e.target.value;
+        if (name === 'phone') {
+            let x = value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,4})/);
+            if (x) {
+                value = '+' + x[1] + (!x[3] ? x[2] : ' (' + x[2] + ') ') + x[3] + (x[4] ? '-' + x[4] : '');
+                this.setState(() => ({
+                    phone: value
+                }));
+            }
+        }
         this.setState({[name]: value}, () => {
             this.validateField(name, value);
         });
@@ -139,7 +148,7 @@ class OfficeEditor extends Component<State> {
                 address2Valid = (value.length > 1 && value.length < 255) || (value === '');
                 break;
             case 'phone':
-                phoneValid = (/([+]?\d{1,2}[.-\\s]?)?(\d{2,3}[.-]?){2}\d{4}/gm.test(value)) || (value === '');
+                phoneValid = (/^\+\d{1}\s?\(\d{3}\)\s?\d{3}\-\d{4}$/g.test(value)) || (value === '');
                 break;
             case 'fax':
                 faxValid = (value.length > 1 && value.length < 255) || (value === '');
@@ -224,7 +233,7 @@ class OfficeEditor extends Component<State> {
         errors.cityValid = this.state.city.length > 1 && this.state.city.length < 255;
         errors.addressValid = this.state.address.length > 1 && this.state.address.length < 255;
         errors.address2Valid = this.state.address2.length < 255;
-        errors.phoneValid = (/([+]?\d{1,2}[.-\\s]?)?(\d{2,3}[.-]?){2}\d{4}/gm.test(this.state.phone)) || (this.state.phone === '');
+        errors.phoneValid = (/^\+\d{1}\s?\(\d{3}\)\s?\d{3}\-\d{4}$/g.test(this.state.phone)) || (this.state.phone === '');
         errors.faxValid = this.state.fax.length < 255;
         errors.emailValid = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i.test(this.state.email) || (this.state.email === '');
 
@@ -307,6 +316,10 @@ class OfficeEditor extends Component<State> {
                     <div className="FormGroup">
                         <label htmlFor="OfficeType">Office Type:</label>
                         <input className='OfficeType' type='checkbox' name='primary' onChange={this.handleCheck} value={this.state.primary} checked={this.state.primary} id='OfficeType'/>
+                        <span className='CustomCheckBox'>
+                            <span onClick={this.handleCheck} className='CustomCheck'><FontAwesomeIcon icon={faCheck}/></span>
+                            <span onClick={this.handleCheck} className='Label'>Primary HQ</span>
+                        </span>
                     </div>
                 </div>
                 <div className="EditActions">

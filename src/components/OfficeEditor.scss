@@ -42,21 +42,47 @@
         color: $font_color;
 
         &.OfficeType {
-          position: relative;
-
-          &:after {
-            content: 'Primary HQ';
-            position: absolute;
-            display: block;
-            left: 25px;
-            top: 50%;
-            transform: translateY(-40%);
-          }
+          display: none;
         }
 
         &.invalid {
           border-color: red;
         }
+      }
+
+      .CustomCheckBox {
+        position: relative;
+        width: 191px;
+
+        .CustomCheck {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          width: 16px;
+          height: 16px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #2888d1;
+          border-radius: 2px;
+          cursor: pointer;
+
+          svg {
+            display: none;
+            color: white;
+            font-size: 10px;
+          }
+        }
+
+        .Label {
+          margin-left: 24px;
+          cursor: pointer;
+        }
+      }
+
+      input.OfficeType:checked + .CustomCheckBox .CustomCheck svg {
+        display: block;
       }
 
       .Countries, .City {
