@@ -47,31 +47,48 @@ class Office extends Component {
                                         <span className='OfficePrimary'><FontAwesomeIcon icon={faCheck}/>Primary HQ</span> :
                                         null
                                 }
-                                <address>{data.country}, {data.address}, {data.address2}, {data.code} {data.city}</address>
+                                <address>
+                                    {data.address ? <span>{data.address} <br/></span> : null}
+                                    {data.address2 ? <span>{data.address2} <br/></span> : null}
+                                    {data.city ? `${data.city},` : null} {data.province} {data.code ? <span>{data.code} <br/></span> : null}
+                                    {data.country}
+                                </address>
                             </td>
                         </tr>
                         </tbody>
                     </table>
                     <table className='OfficeContact'>
                         <tbody>
-                        <tr>
-                            <th>Phone:</th>
-                            <td>
-                                <span className="OfficePhone">{data.phone}</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Fax:</th>
-                            <td>
-                                <span className="OfficeEmail">{data.fax}</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Email:</th>
-                            <td>
-                                <span className="OfficeEmail">{data.email}</span>
-                            </td>
-                        </tr>
+                        {
+                            data.phone ?
+                                <tr>
+                                    <th>Phone:</th>
+                                    <td>
+                                        <span className="OfficePhone">{data.phone}</span>
+                                    </td>
+                                </tr>
+                                : null
+                        }
+                        {
+                            data.fax ?
+                                <tr>
+                                    <th>Fax:</th>
+                                    <td>
+                                        <span className="OfficeEmail">{data.fax}</span>
+                                    </td>
+                                </tr>
+                                : null
+                        }
+                        {
+                            data.email ?
+                                <tr>
+                                    <th>Email:</th>
+                                    <td>
+                                        <span className="OfficeEmail">{data.email}</span>
+                                    </td>
+                                </tr>
+                                : null
+                        }
                         </tbody>
                     </table>
                     <div className="OfficeActions">
