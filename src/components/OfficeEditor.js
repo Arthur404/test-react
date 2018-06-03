@@ -284,17 +284,13 @@ class OfficeEditor extends Component<Props, State> {
         return isError;
     };
 
-    setFocus(fieldName: string) {
-        this[fieldName].focus();
-    }
-
     render() {
         return (
             <form autoComplete="off" className="OfficeEdit" onSubmit={this.handleSubmit}>
                 <div className="FormBox">
                     <div className="FormGroup Select">
                         <label htmlFor="Country">*Country:</label>
-                        <span onClick={this.setFocus.bind(this, 'country')} className='AngleDown'>
+                        <span onClick={() => {this.country ? this.country.focus() : null}} className='AngleDown'>
                             <FontAwesomeIcon icon={faAngleDown}/>
                         </span>
                         <input ref={(input) => { this.country = input; }} className={this.state.countryValid ? '' : 'invalid'} type='text' name='country' onChange={this.handleChange.bind(this, COUNTRIES)} value={this.state.country} id="Country"/>
@@ -316,7 +312,7 @@ class OfficeEditor extends Component<Props, State> {
                     </div>
                     <div className="FormGroup Select">
                         <label htmlFor="City">*City:</label>
-                        <span onClick={this.setFocus.bind(this, 'city')} className="AngleDown">
+                        <span onClick={() => {this.city ? this.city.focus() : null}} className="AngleDown">
                             <FontAwesomeIcon icon={faAngleDown}/>
                         </span>
                         <input ref={(input) => { this.city = input; }} className={this.state.cityValid ? '' : 'invalid'} type='text' name='city' onChange={this.handleChange.bind(this, STATES)} value={this.state.city} id='City'/>

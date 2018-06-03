@@ -26,7 +26,7 @@ class OfficeRemoving extends Component<Props, State> {
         reasonValid: true
     };
 
-    reason:? HTMLInputElement;
+    reason: ?HTMLInputElement;
 
     handleCancelRemoveOffice = (e: SyntheticEvent<HTMLElement>) => {
         if (e.currentTarget === e.target) {
@@ -34,10 +34,6 @@ class OfficeRemoving extends Component<Props, State> {
                 this.props.handleCancelRemoveOffice(false);
             }
         }
-    };
-
-    setFocus(fieldName: string) {
-        this[fieldName].focus();
     };
 
     handleSetValue = (e: SyntheticEvent<HTMLUListElement>) => {
@@ -118,7 +114,7 @@ class OfficeRemoving extends Component<Props, State> {
                     <p className="Description">Please tell us why you’re removing this record.</p>
                     <form autoComplete="off" className='OfficeRemove' onSubmit={this.handleSubmit}>
                         <div className="FormGroup">
-                            <span onClick={this.setFocus.bind(this, 'reason')} className='AngleDown'>
+                            <span onClick={() => {this.reason ? this.reason.focus() : null}} className='AngleDown'>
                                 <FontAwesomeIcon icon={faAngleDown}/>
                             </span>
                             <input ref={(input) => { this.reason = input; }} className={this.state.reasonValid ? '' : 'invalid'} name='reason' value={this.state.reason} type='text'/>
