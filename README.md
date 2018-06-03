@@ -1,6 +1,6 @@
 # Getting Started:
 
-#### Install packages:
+### Install packages:
 `npm install` or `yarn`
 
 ### Setup API:
