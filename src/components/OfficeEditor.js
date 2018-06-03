@@ -90,7 +90,7 @@ class OfficeEditor extends Component<Props, State> {
         }
     };
 
-    handleChange(array: Array<string>, e: SyntheticEvent<HTMLInputElement>) {
+    handleChange(array: Array<string>, e: SyntheticInputEvent<HTMLInputElement>) {
         const name: string = e.currentTarget.name;
         let value: string = e.currentTarget.value;
         if (name === 'phone') {

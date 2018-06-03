@@ -10,7 +10,7 @@ import api from '../api';
 
 const OfficeActions = {
     loadOffices() {
-        return (dispatch: Function) => {
+        return (dispatch: Function) : void => {
             dispatch({
                 type: REQUEST_OFFICE
             });
@@ -32,7 +32,7 @@ const OfficeActions = {
     },
 
     createOffice(office: {}) {
-        return (dispatch: Function) => {
+        return (dispatch: Function) : void => {
             dispatch({
                 type: CREATE_OFFICE
             });
@@ -54,7 +54,7 @@ const OfficeActions = {
     },
 
     deleteOffice(officeId: string) {
-        return (dispatch: Function) => {
+        return (dispatch: Function) : void => {
             dispatch({
                 type: DELETE_OFFICE
             });
@@ -76,7 +76,7 @@ const OfficeActions = {
     },
 
     updateOffice(officeId: string, data: {}) {
-        return (dispatch: Function) => {
+        return (dispatch: Function) : void => {
             dispatch({
                 type: UPDATE_OFFICE
             });

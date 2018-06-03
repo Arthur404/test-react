@@ -121,7 +121,7 @@ class OfficeRemoving extends Component<Props, State> {
                             <span onClick={this.setFocus.bind(this, 'reason')} className='AngleDown'>
                                 <FontAwesomeIcon icon={faAngleDown}/>
                             </span>
-                            <input ref={(input) => {this.reason = input}} className={this.state.reasonValid ? '' : 'invalid'} name='reason' value={this.state.reason} type='text'/>
+                            <input ref={(input) => { this.reason = input; }} className={this.state.reasonValid ? '' : 'invalid'} name='reason' value={this.state.reason} type='text'/>
                             <ul>
                                 <li onClick={this.handleSetValue}>Former Record</li>
                                 <li onClick={this.handleSetValue}>Duplicate Record</li>
