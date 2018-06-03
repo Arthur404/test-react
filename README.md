@@ -3,7 +3,7 @@
 ### Install packages:
 `npm install` or `yarn`
 
-### Setup API:
+### Setup DB Server:
 `npm run server` or `npm run server`
 
 ### Run built-in commands:
