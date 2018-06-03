@@ -8,29 +8,53 @@ import {COUNTRIES, STATES} from '../constants/OfficeConst';
 
 import './OfficeEditor.scss'
 
-type State = {
-    country: String,
-    province: String,
-    code: String,
-    city: String,
-    address: String,
-    address2: String,
-    phone: String,
-    fax: String,
-    email: String,
-    primary: Boolean,
-    countryValid: Boolean,
-    provinceValid: Boolean,
-    codeValid: Boolean,
-    cityValid: Boolean,
-    addressValid: Boolean,
-    address2Valid: Boolean,
-    phoneValid: Boolean,
-    faxValid: Boolean,
-    emailValid: Boolean,
+type Props = {
+    data: {
+        country: string,
+        province: string,
+        code: string,
+        city: string,
+        address: string,
+        address2: string,
+        phone: string,
+        fax: string,
+        email: string,
+        primary: boolean,
+        _id: string
+    },
+    stateForm: Function,
+    saveOffice: Function,
+    officeStates: {
+        onCreate: boolean
+    }
 };
 
-class OfficeEditor extends Component<State> {
+type State = {
+    country: string,
+    province: string,
+    code: string,
+    city: string,
+    address: string,
+    address2: string,
+    phone: string,
+    fax: string,
+    email: string,
+    primary: boolean,
+    id: string,
+    countryValid: boolean,
+    provinceValid: boolean,
+    codeValid: boolean,
+    cityValid: boolean,
+    addressValid: boolean,
+    address2Valid: boolean,
+    phoneValid: boolean,
+    faxValid: boolean,
+    emailValid: boolean,
+    displayCountries: Array<string>,
+    displayCity: Array<string>
+};
+
+class OfficeEditor extends Component<Props, State> {
     state = {
         country: this.props.data.country,
         province: this.props.data.province,
@@ -56,16 +80,19 @@ class OfficeEditor extends Component<State> {
         displayCity: STATES
     };
 
-    handleShowForm = (e) => {
+    country:? HTMLInputElement;
+    city:? HTMLInputElement;
+
+    handleShowForm = (e: SyntheticEvent<HTMLButtonElement>) => {
         e.preventDefault();
         if(this.props.stateForm) {
             this.props.stateForm(false);
         }
     };
 
-    handleChange(array, e) {
-        const name = e.target.name;
-        let value = e.target.value;
+    handleChange(array: Array<string>, e: SyntheticEvent<HTMLInputElement>) {
+        const name: string = e.currentTarget.name;
+        let value: string = e.currentTarget.value;
         if (name === 'phone') {
             let x = value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,4})/);
             if (x) {
@@ -84,10 +111,10 @@ class OfficeEditor extends Component<State> {
         }
     };
 
-    handleSearch = (name, val, array) => {
+    handleSearch = (name: string, val: string, array: Array<string>) => {
         const searchQuery = val.toLowerCase();
 
-        const displayArray = array.filter((item) => {
+        const displayArray: Array<string> = array.filter((item) => {
             let searchValue = item.toLowerCase();
             return searchValue.indexOf(searchQuery) !== -1;
         });
@@ -105,7 +132,7 @@ class OfficeEditor extends Component<State> {
         }
     };
 
-    handleSetValue (fieldName, value) {
+    handleSetValue (fieldName: string, value: string) {
         this.setState({[fieldName]: value}, () => {
             this.validateField(fieldName, value);
         });
@@ -118,15 +145,15 @@ class OfficeEditor extends Component<State> {
     };
 
     validateField(fieldName: string, value: string) {
-        let countryValid: string = this.state.countryValid;
-        let provinceValid: string = this.state.provinceValid;
-        let codeValid: string = this.state.codeValid;
-        let cityValid: string = this.state.cityValid;
-        let addressValid: string = this.state.addressValid;
-        let address2Valid: string = this.state.address2Valid;
-        let phoneValid: string = this.state.phoneValid;
-        let faxValid: string = this.state.faxValid;
-        let emailValid: string = this.state.emailValid;
+        let countryValid: boolean = this.state.countryValid;
+        let provinceValid: boolean = this.state.provinceValid;
+        let codeValid: boolean = this.state.codeValid;
+        let cityValid: boolean = this.state.cityValid;
+        let addressValid: boolean = this.state.addressValid;
+        let address2Valid: boolean = this.state.address2Valid;
+        let phoneValid: boolean = this.state.phoneValid;
+        let faxValid: boolean = this.state.faxValid;
+        let emailValid: boolean = this.state.emailValid;
 
         switch(fieldName) {
             case 'country':
@@ -173,7 +200,7 @@ class OfficeEditor extends Component<State> {
         });
     };
 
-    handleSubmit = (e) => {
+    handleSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const officeData : {
@@ -257,7 +284,7 @@ class OfficeEditor extends Component<State> {
         return isError;
     };
 
-    setFocus(fieldName) {
+    setFocus(fieldName: string) {
         this[fieldName].focus();
     }
 
@@ -292,7 +319,7 @@ class OfficeEditor extends Component<State> {
                         <span onClick={this.setFocus.bind(this, 'city')} className="AngleDown">
                             <FontAwesomeIcon icon={faAngleDown}/>
                         </span>
-                        <input ref={(input) => { this.city = input; }} className={this.state.cityValid ? '' : 'invalid'} type='text' name='city' onChange={this.handleChange.bind(this, COUNTRIES)} value={this.state.city} id='City'/>
+                        <input ref={(input) => { this.city = input; }} className={this.state.cityValid ? '' : 'invalid'} type='text' name='city' onChange={this.handleChange.bind(this, STATES)} value={this.state.city} id='City'/>
                         <ul className='City'>
                             {
                                 this.state.displayCity.map((city, id) => (

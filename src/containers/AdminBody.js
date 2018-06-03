@@ -11,7 +11,22 @@ import Offices from '../components/Offices'
 
 import './AdminBody.scss'
 
-class AdminBody extends Component {
+type Props = {
+    officeStates: {
+        offices: [],
+        fetching: boolean,
+        error: any,
+        onCreate: boolean
+    },
+    officeActions: {
+        loadOffices: Function,
+        createOffice: Function,
+        deleteOffice: Function,
+        updateOffice: Function
+    }
+}
+
+class AdminBody extends Component<Props> {
     render() {
         return (
             <section className="AdminBody">

@@ -7,14 +7,19 @@ import {
     UPDATE_OFFICE, SUCCESS_UPDATE_OFFICE, FAIL_UPDATE_OFFICE
 } from '../constants/OfficeConst';
 
-const initialState = {
+const initialState: {
+    offices: [],
+    fetching: boolean,
+    error: any,
+    onCreate: boolean
+} = {
     offices: [],
     fetching: false,
     error: null,
     onCreate: false
 };
 
-export default (state = initialState, action: Object): Object => {
+export default (state: {} = initialState, action: {type: boolean, payload: {}}): {} => {
     switch (action.type) {
         case REQUEST_OFFICE:
             return {...state, onCreate: false, fetching: true};

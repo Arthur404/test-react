@@ -8,7 +8,7 @@ import AdminBody from './AdminBody'
 
 import './Profile.scss'
 
-class Profile extends Component {
+class Profile extends Component<{}> {
     render() {
         return (
             <Grid fluid={true}>

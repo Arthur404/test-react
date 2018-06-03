@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 import './Header.scss'
 import logo from '../img/spd-u.svg'
 
-class Header extends Component {
+class Header extends Component<{}> {
 
     render() {
         return (

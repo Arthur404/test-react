@@ -8,12 +8,8 @@ import './AdminMenu.scss'
 
 import step from '../img/8.svg'
 
-class AdminMenu extends Component {
-    constructor(props) {
-        super(props);
-    };
-
-    handleShowItems = (e) => {
+class AdminMenu extends Component<{}> {
+    handleShowItems = (e: SyntheticEvent<HTMLSpanElement>) => {
         const currentEl = e.currentTarget;
         currentEl.classList.toggle('Active')
     };

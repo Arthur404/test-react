@@ -6,18 +6,29 @@ import {faAngleDown} from '@fortawesome/fontawesome-free-solid';
 
 import './OfficeRemoving.scss'
 
-class OfficeRemoving extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isRemoving: false,
-            reason: '',
-            notes: '',
-            reasonValid: true
-        }
-    }
+type Props = {
+    handleOfficeDelete: Function,
+    handleCancelRemoveOffice: Function
+}
 
-    handleCancelRemoveOffice = (e) => {
+type State = {
+    isRemoving: boolean,
+    reason: string,
+    notes: string,
+    reasonValid: boolean
+};
+
+class OfficeRemoving extends Component<Props, State> {
+    state = {
+        isRemoving: false,
+        reason: '',
+        notes: '',
+        reasonValid: true
+    };
+
+    reason:? HTMLInputElement;
+
+    handleCancelRemoveOffice = (e: SyntheticEvent<HTMLElement>) => {
         if (e.currentTarget === e.target) {
             if(this.props.handleCancelRemoveOffice) {
                 this.props.handleCancelRemoveOffice(false);
@@ -25,20 +36,20 @@ class OfficeRemoving extends Component {
         }
     };
 
-    setFocus(fieldName) {
+    setFocus(fieldName: string) {
         this[fieldName].focus();
     };
 
-    handleSetValue = (e) => {
-        const value = e.target.innerText;
+    handleSetValue = (e: SyntheticEvent<HTMLUListElement>) => {
+        const value: string = e.currentTarget.textContent;
         this.setState(() => ({
             reason: value
         }));
     };
 
-    handleChangeNotes = (e) => {
-        const name = e.target.name;
-        let value = e.target.value;
+    handleChangeNotes = (e: SyntheticEvent<HTMLInputElement>) => {
+        const name: string = e.currentTarget.name;
+        let value: string = e.currentTarget.value;
 
         this.setState({[name]: value}, () => {
             this.validateField(name, value);
@@ -46,7 +57,7 @@ class OfficeRemoving extends Component {
     };
 
     validateField(fieldName: string, value: string) {
-        let reasonValid: string = this.state.reasonValid;
+        let reasonValid: boolean = this.state.reasonValid;
 
         switch(fieldName) {
             case 'country':
@@ -61,7 +72,7 @@ class OfficeRemoving extends Component {
         });
     };
 
-    handleSubmit = (e) => {
+    handleSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const officeData : {
@@ -79,8 +90,10 @@ class OfficeRemoving extends Component {
     };
 
     validateForm = () => {
-        let isError = false;
-        const errors = {
+        let isError: boolean = false;
+        const errors: {
+            reasonValid: boolean
+        } = {
             reasonValid: true
         };
 
@@ -100,7 +113,7 @@ class OfficeRemoving extends Component {
 
     render() {
         return (
-            <div onClick={this.handleRemoveOffice} className='PopupRemove active'>
+            <div onClick={this.handleCancelRemoveOffice} className='PopupRemove active'>
                 <div className="RemoveBlock">
                     <p className="Description">Please tell us why you’re removing this record.</p>
                     <form autoComplete="off" className='OfficeRemove' onSubmit={this.handleSubmit}>
@@ -108,7 +121,7 @@ class OfficeRemoving extends Component {
                             <span onClick={this.setFocus.bind(this, 'reason')} className='AngleDown'>
                                 <FontAwesomeIcon icon={faAngleDown}/>
                             </span>
-                            <input ref={(input) => { this.reason = input; }} className={this.state.reasonValid ? '' : 'invalid'} name='reason' value={this.state.reason} type='text'/>
+                            <input ref={(input) => {this.reason = input}} className={this.state.reasonValid ? '' : 'invalid'} name='reason' value={this.state.reason} type='text'/>
                             <ul>
                                 <li onClick={this.handleSetValue}>Former Record</li>
                                 <li onClick={this.handleSetValue}>Duplicate Record</li>

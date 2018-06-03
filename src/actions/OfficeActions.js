@@ -10,7 +10,7 @@ import api from '../api';
 
 const OfficeActions = {
     loadOffices() {
-        return (dispatch) => {
+        return (dispatch: Function) => {
             dispatch({
                 type: REQUEST_OFFICE
             });
@@ -31,34 +31,30 @@ const OfficeActions = {
         }
     },
 
-    createOffice(office) {
-        return (dispatch) => {
+    createOffice(office: {}) {
+        return (dispatch: Function) => {
             dispatch({
                 type: CREATE_OFFICE
             });
 
-            return new Promise((resolve, reject)=>{
-                api.createOffice(office)
-                    .then(() => {
-                        dispatch({
-                            type: SUCCESS_CREATE_OFFICE
-                        });
-                        resolve(SUCCESS_CREATE_OFFICE);
+            api.createOffice(office)
+                .then(() => {
+                    dispatch({
+                        type: SUCCESS_CREATE_OFFICE
+                    });
+                })
+                .then(()=> this.loadOffices())
+                .catch(err => (
+                    dispatch({
+                        type: FAIL_CREATE_OFFICE,
+                        payload: err
                     })
-                    .then(()=> this.loadOffices())
-                    .catch(err => (
-                        dispatch({
-                            type: FAIL_CREATE_OFFICE,
-                            payload: err
-                        })
-                    ));
-
-            });
+                ));
         }
     },
 
-    deleteOffice(officeId) {
-        return (dispatch) => {
+    deleteOffice(officeId: string) {
+        return (dispatch: Function) => {
             dispatch({
                 type: DELETE_OFFICE
             });
@@ -79,8 +75,8 @@ const OfficeActions = {
         }
     },
 
-    updateOffice(officeId, data) {
-        return (dispatch) => {
+    updateOffice(officeId: string, data: {}) {
+        return (dispatch: Function) => {
             dispatch({
                 type: UPDATE_OFFICE
             });

@@ -3,9 +3,15 @@
 import React from 'react';
 import {Grid}  from 'react-bootstrap';
 
-const NoMatch = ({ location }) => (
+type Props = {
+    location: {
+        pathname: string
+    }
+};
+
+const NoMatch = (props: Props) => (
     <Grid fluid={true}>
-        <h3>No match for <code>{location.pathname}</code></h3>
+        <h3>No match for <code>{props.location.pathname}</code></h3>
     </Grid>
 );
 

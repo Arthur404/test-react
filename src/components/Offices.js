@@ -7,7 +7,19 @@ import OfficeEditor from './OfficeEditor';
 
 import './Offices.scss'
 
-const initialData = {
+const initialData: {
+    country: string,
+    province: string,
+    code: string,
+    city: string,
+    address: string,
+    address2: string,
+    phone: string,
+    fax: string,
+    email: string,
+    primary: boolean,
+    _id: string
+} = {
     country: '',
     province: '',
     code: '',
@@ -21,25 +33,41 @@ const initialData = {
     _id: ''
 };
 
-class Offices extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            activeForm: this.props.officeStates.onCreate,
-        };
-    }
+type Props = {
+    officeStates: {
+        offices: [],
+        fetching: boolean,
+        error: any,
+        onCreate: boolean
+    },
+    officeActions: {
+        loadOffices: Function,
+        createOffice: Function,
+        deleteOffice: Function,
+        updateOffice: Function
+    },
+};
+
+type State = {
+    activeForm: boolean,
+};
+
+class Offices extends Component<Props, State> {
+    state = {
+        activeForm: this.props.officeStates.onCreate
+    };
 
     componentWillMount() {
         this.props.officeActions.loadOffices()
     }
 
-    handleShowForm(state) {
+    handleShowForm(state: boolean) {
         this.setState(prevState => ({
             activeForm: state
         }))
     };
 
-    handleNewOffice = (data) => {
+    handleNewOffice = (data: {}) => {
         this.props.officeActions.createOffice(data);
     };
 

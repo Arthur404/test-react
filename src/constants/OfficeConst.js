@@ -16,7 +16,7 @@ export const UPDATE_OFFICE: string = 'UPDATE_OFFICE';
 export const SUCCESS_UPDATE_OFFICE: string = 'SUCCESS_UPDATE_OFFICE';
 export const FAIL_UPDATE_OFFICE: string = 'FAIL_UPDATE_OFFICE';
 
-export const COUNTRIES: Array = [
+export const COUNTRIES: Array<string> = [
     'Afghanistan',
     'Albania',
     'Algeria',
@@ -262,7 +262,7 @@ export const COUNTRIES: Array = [
     'Zimbabwe',
 ];
 
-export const STATES: Array = [
+export const STATES: Array<string> = [
     "Alabama",
     "Alaska",
     "American Samoa",

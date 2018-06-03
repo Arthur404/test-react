@@ -9,38 +9,53 @@ import OfficeRemoving from './OfficeRemoving';
 
 import './Office.scss'
 
-class Office extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isEdit: false,
-            isRemove: false
-        }
-    }
+type Props = {
+    officeStates: {
+        offices: [],
+        fetching: boolean,
+        error: any,
+        onCreate: boolean
+    },
+    officeActions: {
+        deleteOffice: Function,
+        updateOffice: Function
+    },
+    data: {}
+};
 
-    handleRemoveOffice(state) {
+type State = {
+    isEdit: boolean,
+    isRemove: boolean
+};
+
+class Office extends Component<Props, State> {
+    state = {
+        isEdit: false,
+        isRemove: false
+    };
+
+    handleRemoveOffice(state: boolean) {
         this.setState(() => ({
             isRemove: state
         }));
     };
 
-    handleUpdateOffice = (data) => {
+    handleUpdateOffice = (data: {id: string}) => {
         this.props.officeActions.updateOffice(data.id, data);
     };
 
-    handleOfficeDelete(office) {
+    handleOfficeDelete(office: {_id: string}) {
         this.props.officeActions.deleteOffice(office._id);
     };
 
-    editOffice (state) {
+    editOffice (state: boolean) {
         this.setState(prevState => ({
             isEdit: state
         }));
     };
 
     render() {
-        const data: Array = this.props.data;
-
+        const data: Object = this.props.data;
         return (
             this.state.isEdit ?
                 <OfficeEditor data={data} saveOffice={this.handleUpdateOffice} stateForm={this.editOffice.bind(this)} officeStates={this.props.officeStates} /> :

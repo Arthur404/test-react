@@ -12,7 +12,7 @@ import './style/main.scss';
 
 const store = configureStore();
 
-const rootEl = document.querySelector('#root');
+const rootEl: any = document.getElementById('root');
 
 ReactDOM.render(
     <Provider store={store}>
