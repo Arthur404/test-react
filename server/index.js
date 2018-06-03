@@ -12,19 +12,27 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/office', (req, res) => {
-    db.listOffices().then(data => res.send(data));
+    db.listOffices()
+        .then(data => res.send(data))
+        .catch(err => res.send(err));
 });
 
 app.post('/office', (req, res) => {
-    db.createOffice(req.body).then(data => res.send(data));
+    db.createOffice(req.body)
+        .then(data => res.send(data))
+        .catch(err => res.send(err));
 });
 
 app.delete('/office/:id', (req, res) => {
-    db.deleteOffice(req.params.id).then(data => res.send(data));
+    db.deleteOffice(req.params.id)
+        .then(data => res.send(data))
+        .catch(err => res.send(err));
 });
 
 app.put('/office/:id', (req, res) => {
-    db.updateOffice(req.params.id, req.body).then(data => res.send(data));
+    db.updateOffice(req.params.id, req.body)
+        .then(data => res.send(data))
+        .catch(err => res.send(err));
 });
 
 app.listen(port, (error) => {
