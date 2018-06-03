@@ -22,8 +22,8 @@ type Props = {
         primary: boolean,
         _id: string
     },
-    stateForm: Function,
-    saveOffice: Function,
+    stateForm: (state: boolean) => void,
+    saveOffice: (data: Object) => void,
     officeStates: {
         onCreate: boolean
     }
@@ -114,7 +114,7 @@ class OfficeEditor extends Component<Props, State> {
     handleSearch = (name: string, val: string, array: Array<string>) => {
         const searchQuery = val.toLowerCase();
 
-        const displayArray: Array<string> = array.filter((item) => {
+        const displayArray: Array<string> = array.filter((item) : boolean => {
             let searchValue = item.toLowerCase();
             return searchValue.indexOf(searchQuery) !== -1;
         });
@@ -240,7 +240,7 @@ class OfficeEditor extends Component<Props, State> {
         }
     };
 
-    validateForm = () => {
+    validateForm = () : boolean => {
         let isError = false;
         const errors = {
             countryValid: true,

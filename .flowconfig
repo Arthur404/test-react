@@ -9,6 +9,8 @@
 [lints]
 
 [options]
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe TODO:
+suppress_comment= \\(.\\|\n\\)*\\$FlowIgnoreMe WHY:
 module.file_ext=.js
 module.file_ext=.jsx
 module.file_ext=.scss

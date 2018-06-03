@@ -8,8 +8,8 @@ import {
 } from '../constants/OfficeConst';
 import api from '../api';
 
-const OfficeActions = {
-    loadOffices() {
+const OfficeActions : Object = {
+    loadOffices() : Object {
         return (dispatch: Function) : void => {
             dispatch({
                 type: REQUEST_OFFICE
@@ -31,7 +31,7 @@ const OfficeActions = {
         }
     },
 
-    createOffice(office: {}) {
+    createOffice(office: {}) : Object {
         return (dispatch: Function) : void => {
             dispatch({
                 type: CREATE_OFFICE
@@ -53,7 +53,7 @@ const OfficeActions = {
         }
     },
 
-    deleteOffice(officeId: string) {
+    deleteOffice(officeId: string) : Object {
         return (dispatch: Function) : void => {
             dispatch({
                 type: DELETE_OFFICE
@@ -75,7 +75,7 @@ const OfficeActions = {
         }
     },
 
-    updateOffice(officeId: string, data: {}) {
+    updateOffice(officeId: string, data: {}) : Object {
         return (dispatch: Function) : void => {
             dispatch({
                 type: UPDATE_OFFICE

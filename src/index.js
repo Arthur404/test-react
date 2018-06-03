@@ -12,7 +12,8 @@ import './style/main.scss';
 
 const store = configureStore();
 
-const rootEl: any = document.getElementById('root');
+// $FlowIgnoreMe WHY: document.getElementById always exists
+const rootEl: HTMLElement = document.getElementById('root');
 
 ReactDOM.render(
     <Provider store={store}>

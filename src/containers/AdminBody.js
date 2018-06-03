@@ -19,10 +19,10 @@ type Props = {
         onCreate: boolean
     },
     officeActions: {
-        loadOffices: Function,
-        createOffice: Function,
-        deleteOffice: Function,
-        updateOffice: Function
+        loadOffices: () => Object,
+        createOffice: (data: Object) => Object,
+        deleteOffice: (id: string) => Object,
+        updateOffice: (id: string, data: Object) => Object
     }
 }
 
@@ -53,13 +53,13 @@ class AdminBody extends Component<Props> {
 }
 
 
-const mapStateToProps = (state) => (
+const mapStateToProps = (state) : Object => (
     {
         officeStates: state.OfficeReducer
     }
 );
 
-const mapDispatchToProps = (dispatch) => (
+const mapDispatchToProps = (dispatch) : Object => (
     {
         officeActions: bindActionCreators(OfficeActions, dispatch)
     }

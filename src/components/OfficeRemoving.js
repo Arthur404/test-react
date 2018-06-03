@@ -7,8 +7,8 @@ import {faAngleDown} from '@fortawesome/fontawesome-free-solid';
 import './OfficeRemoving.scss'
 
 type Props = {
-    handleOfficeDelete: Function,
-    handleCancelRemoveOffice: Function
+    handleDeleteOffice: () => void,
+    handleCancelDeleteOffice: (state: boolean) => void
 }
 
 type State = {
@@ -28,10 +28,10 @@ class OfficeRemoving extends Component<Props, State> {
 
     reason: ?HTMLInputElement;
 
-    handleCancelRemoveOffice = (e: SyntheticEvent<HTMLElement>) => {
+    handleCancelDeleteOffice = (e: SyntheticEvent<HTMLElement>) => {
         if (e.currentTarget === e.target) {
-            if(this.props.handleCancelRemoveOffice) {
-                this.props.handleCancelRemoveOffice(false);
+            if(this.props.handleCancelDeleteOffice) {
+                this.props.handleCancelDeleteOffice(false);
             }
         }
     };
@@ -81,7 +81,7 @@ class OfficeRemoving extends Component<Props, State> {
 
         if(!err) {
             console.log(officeData);
-            this.props.handleOfficeDelete();
+            this.props.handleDeleteOffice();
         }
     };
 
@@ -109,7 +109,7 @@ class OfficeRemoving extends Component<Props, State> {
 
     render() {
         return (
-            <div onClick={this.handleCancelRemoveOffice} className='PopupRemove active'>
+            <div onClick={this.handleCancelDeleteOffice} className='PopupRemove active'>
                 <div className="RemoveBlock">
                     <p className="Description">Please tell us why you’re removing this record.</p>
                     <form autoComplete="off" className='OfficeRemove' onSubmit={this.handleSubmit}>
@@ -130,7 +130,7 @@ class OfficeRemoving extends Component<Props, State> {
                             <textarea rows="4" onChange={this.handleChangeNotes} name='notes' value={this.state.notes} className='Notes' id='Notes'/>
                         </div>
                         <div className="FormAction">
-                            <button onClick={this.handleCancelRemoveOffice} className='Btn'>Cancel</button>
+                            <button onClick={this.handleCancelDeleteOffice} className='Btn'>Cancel</button>
                             <button type='submit' className='Btn BtnPrimary'>Remove Record</button>
                         </div>
                     </form>

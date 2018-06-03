@@ -17,8 +17,8 @@ type Props = {
         onCreate: boolean
     },
     officeActions: {
-        deleteOffice: Function,
-        updateOffice: Function
+        deleteOffice: (id: string) => Object,
+        updateOffice: (id: string, data: Object) => Object
     },
     data: {}
 };
@@ -34,7 +34,7 @@ class Office extends Component<Props, State> {
         isRemove: false
     };
 
-    handleRemoveOffice(state: boolean) {
+    handleCancelDeleteOffice(state: boolean) {
         this.setState(() => ({
             isRemove: state
         }));
@@ -44,7 +44,7 @@ class Office extends Component<Props, State> {
         this.props.officeActions.updateOffice(data.id, data);
     };
 
-    handleOfficeDelete(office: {_id: string}) {
+    handleDeleteOffice(office: {_id: string}) {
         this.props.officeActions.deleteOffice(office._id);
     };
 
@@ -56,13 +56,14 @@ class Office extends Component<Props, State> {
 
     render() {
         const data: Object = this.props.data;
+
         return (
             this.state.isEdit ?
                 <OfficeEditor data={data} saveOffice={this.handleUpdateOffice} stateForm={this.editOffice.bind(this)} officeStates={this.props.officeStates} /> :
                 <React.Fragment>
                     {
                         this.state.isRemove ?
-                            <OfficeRemoving handleCancelRemoveOffice={this.handleRemoveOffice.bind(this)} handleOfficeDelete={this.handleOfficeDelete.bind(this, data)}/>
+                            <OfficeRemoving handleCancelDeleteOffice={this.handleCancelDeleteOffice.bind(this)} handleDeleteOffice={this.handleDeleteOffice.bind(this, data)}/>
                             : null
                     }
                     <table className='OfficeAddress'>
@@ -120,7 +121,7 @@ class Office extends Component<Props, State> {
                         </tbody>
                     </table>
                     <div className="OfficeActions">
-                        <button onClick={this.handleRemoveOffice.bind(this, true)} className='Btn BtnRemove BtnSm'>Remove</button>
+                        <button onClick={this.handleCancelDeleteOffice.bind(this, true)} className='Btn BtnRemove BtnSm'>Remove</button>
                         <button onClick={this.editOffice.bind(this, true)} className='Btn BtnPrimary BtnSm'>Edit</button>
                     </div>
                 </React.Fragment>
