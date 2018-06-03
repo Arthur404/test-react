@@ -28,6 +28,4 @@ class App extends Component<Props> {
     }
 }
 
-
-
 export default App;
