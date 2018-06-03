@@ -26,8 +26,6 @@ class OfficeRemoving extends Component<Props, State> {
         reasonValid: true
     };
 
-    reason: ?HTMLInputElement;
-
     handleCancelDeleteOffice = (e: SyntheticEvent<HTMLElement>) => {
         if (e.currentTarget === e.target) {
             if(this.props.handleCancelDeleteOffice) {
@@ -114,10 +112,10 @@ class OfficeRemoving extends Component<Props, State> {
                     <p className="Description">Please tell us why you’re removing this record.</p>
                     <form autoComplete="off" className='OfficeRemove' onSubmit={this.handleSubmit}>
                         <div className="FormGroup">
-                            <span onClick={() => {this.reason ? this.reason.focus() : null}} className='AngleDown'>
+                            <label htmlFor='Reason' className='AngleDown'>
                                 <FontAwesomeIcon icon={faAngleDown}/>
-                            </span>
-                            <input ref={(input) => { this.reason = input; }} className={this.state.reasonValid ? '' : 'invalid'} name='reason' value={this.state.reason} type='text'/>
+                            </label>
+                            <input type='text' className={this.state.reasonValid ? '' : 'invalid'} name='reason' value={this.state.reason} id='Reason'/>
                             <ul>
                                 <li onClick={this.handleSetValue}>Former Record</li>
                                 <li onClick={this.handleSetValue}>Duplicate Record</li>

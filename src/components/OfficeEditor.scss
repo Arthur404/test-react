@@ -107,7 +107,7 @@
         list-style: none;
         z-index: -10;
         opacity: 0;
-        transition: z-index .1s;
+        transition: z-index 1s;
 
         li {
           padding: 11px 16px;
@@ -138,6 +138,7 @@
       input:focus + .City {
         z-index: 10;
         opacity: 1;
+        transition: z-index 0s;
       }
     }
   }

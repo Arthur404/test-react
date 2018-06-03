@@ -80,9 +80,6 @@ class OfficeEditor extends Component<Props, State> {
         displayCity: STATES
     };
 
-    country:? HTMLInputElement;
-    city:? HTMLInputElement;
-
     handleShowForm = (e: SyntheticEvent<HTMLButtonElement>) => {
         e.preventDefault();
         if(this.props.stateForm) {
@@ -289,11 +286,12 @@ class OfficeEditor extends Component<Props, State> {
             <form autoComplete="off" className="OfficeEdit" onSubmit={this.handleSubmit}>
                 <div className="FormBox">
                     <div className="FormGroup Select">
-                        <label htmlFor="Country">*Country:</label>
-                        <span onClick={() => {this.country ? this.country.focus() : null}} className='AngleDown'>
-                            <FontAwesomeIcon icon={faAngleDown}/>
-                        </span>
-                        <input ref={(input) => { this.country = input; }} className={this.state.countryValid ? '' : 'invalid'} type='text' name='country' onChange={this.handleChange.bind(this, COUNTRIES)} value={this.state.country} id="Country"/>
+                        <label htmlFor="Country">*Country:
+                            <span className='AngleDown'>
+                                <FontAwesomeIcon icon={faAngleDown}/>
+                            </span>
+                        </label>
+                        <input className={this.state.countryValid ? '' : 'invalid'} type='text' name='country' onChange={this.handleChange.bind(this, COUNTRIES)} value={this.state.country} id="Country"/>
                         <ul className='Countries'>
                             {
                                 this.state.displayCountries.map((country, id) => (
@@ -311,11 +309,12 @@ class OfficeEditor extends Component<Props, State> {
                         <input className={this.state.codeValid ? '' : 'invalid'} type='text' name='code' onChange={this.handleChange.bind(this, [])} value={this.state.code} id='Code'/>
                     </div>
                     <div className="FormGroup Select">
-                        <label htmlFor="City">*City:</label>
-                        <span onClick={() => {this.city ? this.city.focus() : null}} className="AngleDown">
-                            <FontAwesomeIcon icon={faAngleDown}/>
-                        </span>
-                        <input ref={(input) => { this.city = input; }} className={this.state.cityValid ? '' : 'invalid'} type='text' name='city' onChange={this.handleChange.bind(this, STATES)} value={this.state.city} id='City'/>
+                        <label htmlFor="City">*City:
+                            <span className="AngleDown">
+                                <FontAwesomeIcon icon={faAngleDown}/>
+                            </span>
+                        </label>
+                        <input className={this.state.cityValid ? '' : 'invalid'} type='text' name='city' onChange={this.handleChange.bind(this, STATES)} value={this.state.city} id='City'/>
                         <ul className='City'>
                             {
                                 this.state.displayCity.map((city, id) => (
