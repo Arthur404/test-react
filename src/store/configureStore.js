@@ -1,3 +1,5 @@
+// @flow
+
 import {createStore, applyMiddleware} from 'redux';
 import {routerMiddleware} from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory'
@@ -6,7 +8,7 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 
 import rootReducer from '../reducers';
 
-export default function configureStore() {
+export default function configureStore() : Object {
     const history = createHistory();
     const middleware = [
         thunk,

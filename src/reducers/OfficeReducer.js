@@ -19,7 +19,7 @@ const initialState: {
     onCreate: false
 };
 
-export default (state: Object = initialState, action: {type: boolean, payload: Object}): {} => {
+export default (state: Object = initialState, action: {type: boolean, payload: Object}) : Object => {
     switch (action.type) {
         case REQUEST_OFFICE:
             return {...state, onCreate: false, fetching: true};

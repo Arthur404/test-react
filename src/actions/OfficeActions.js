@@ -31,7 +31,7 @@ const OfficeActions : Object = {
         }
     },
 
-    createOffice(office: {}) : Object {
+    createOffice(office: Object) : Object {
         return (dispatch: Function) : void => {
             dispatch({
                 type: CREATE_OFFICE
@@ -75,7 +75,7 @@ const OfficeActions : Object = {
         }
     },
 
-    updateOffice(officeId: string, data: {}) : Object {
+    updateOffice(officeId: string, data: Object) : Object {
         return (dispatch: Function) : void => {
             dispatch({
                 type: UPDATE_OFFICE

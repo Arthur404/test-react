@@ -8,7 +8,6 @@ import './Header.scss'
 import logo from '../img/spd-u.svg'
 
 class Header extends Component<{}> {
-
     render() {
         return (
             <header className='MainHeader'>

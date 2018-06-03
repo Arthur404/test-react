@@ -53,13 +53,13 @@ class AdminBody extends Component<Props> {
 }
 
 
-const mapStateToProps = (state) : Object => (
+const mapStateToProps = (state: Object) : Object => (
     {
         officeStates: state.OfficeReducer
     }
 );
 
-const mapDispatchToProps = (dispatch) : Object => (
+const mapDispatchToProps = (dispatch: Object) : Object => (
     {
         officeActions: bindActionCreators(OfficeActions, dispatch)
     }
