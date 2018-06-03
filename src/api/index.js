@@ -1,21 +1,41 @@
 // @flow
 
-import axios from 'axios';
-
 export default {
     listOffices() : Object {
-        return axios.get(`http://localhost:3001/office`)
+        return fetch(`http://localhost:3001/office`)
+            .then(res => res.json())
+            .catch(err => err)
     },
 
     createOffice(data: Object) : Object {
-        return axios.post(`http://localhost:3001/office`, data)
+        return fetch(`http://localhost:3001/office`, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .catch(err => err)
     },
 
     deleteOffice(officeId: string) : Object {
-        return axios.delete(`http://localhost:3001/office/${officeId}`)
+        return fetch(`http://localhost:3001/office/${officeId}`, {
+            method: 'delete',
+        })
+            .then(res => res.json())
+            .catch(err => err)
     },
 
     updateOffice(officeId: string, data: Object) : Object {
-        return axios.put(`http://localhost:3001/office/${officeId}`, data)
+        return fetch(`http://localhost:3001/office/${officeId}`, {
+            method: 'put',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .catch(err => err)
     }
 }

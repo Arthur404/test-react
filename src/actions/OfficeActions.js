@@ -16,7 +16,7 @@ const OfficeActions : Object = {
             });
 
             api.listOffices()
-                .then(({data}) => (
+                .then((data) => (
                     dispatch({
                         type: SUCCESS_OFFICE,
                         payload: data
